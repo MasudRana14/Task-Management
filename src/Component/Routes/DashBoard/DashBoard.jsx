@@ -52,6 +52,10 @@ const DashBoard = () => {
                         <ul className="menu lg:p-4 text-black">
 
                             <li className="lg:font-bold lg:text-base mx-auto">
+                                <NavLink to="/dashboard/createTask">Create Task</NavLink>
+                            </li>
+
+                            <li className="lg:font-bold lg:text-base mx-auto">
                                 <NavLink to="/dashboard/task">All Task</NavLink>
                             </li>
 
