@@ -1,14 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import SignUpLogo from "../../assets/photo/SignUp.svg"
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SignUp = () => {
 
 
-    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const onSubmit = (data) => {
+
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        reset();
+                        alert("Good job!", "Register SuccessFully", "success");
+                        navigate('/DashBoard')
+                    })
+
+                    .catch(error => {
+                        alert("Oops..!", `${error.message}`, "error");
+                    })
+            })
+
+            .catch(error => {
+                alert("Oops..!", `${error.message}`, "error");
+            })
+
+    }
 
 
-    const onSubmit = (data) => console.log(data)
+
 
 
     return (

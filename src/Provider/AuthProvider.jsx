@@ -34,7 +34,7 @@ const AuthProvider = ({children}) => {
 
     // Log Out
     const logOut = ()=>{
-        return signOut();
+        return signOut(auth);
     } 
 
     // updateUser Profile 

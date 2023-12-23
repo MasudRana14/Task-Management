@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import BannerImg from "../../../assets/photo/BannerImg.jpg"
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 const Banner = () => {
+
+
+    const { user } = useContext(AuthContext)
+
     return (
         <div>
             <div className="hero min-h-[600px]" style={{ backgroundImage: `url(${BannerImg})` }}>
@@ -12,6 +18,15 @@ const Banner = () => {
                         <Link to="login">
                             <button className="rounded-md font-bold btn-sm btn-outline text-white hover:bg-sky-500  bg-pink-500">Let’s Explore</button>
                         </Link>
+
+                        {
+                            user ?<Link to="DashBoard">
+                                <button className="rounded-md ml-4 font-bold btn-sm btn-outline text-white hover:bg-pink-500  bg-sky-500">DashBoard</button>
+                            </Link>
+                            :
+                            ""
+                        }
+
                     </div>
                 </div>
             </div>

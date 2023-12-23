@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginLogo from "../../assets/photo/SignIn.svg"
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -9,9 +9,7 @@ const LogIn = () => {
 
     const {signIn} = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
-
-    const from = location.state?.from?.pathname || "/";
+ 
 
     const handleLogin = event => {
         event.preventDefault();
@@ -23,7 +21,7 @@ const LogIn = () => {
                 const user = result.user;
                 console.log(user);
                alert("Good job!", "Login Successfully", "success");
-                navigate(from, { replace: true });
+                navigate('/DashBoard');
             })
             .catch(error => {
                 alert("Oops..!", `${error.message}`, "error");
