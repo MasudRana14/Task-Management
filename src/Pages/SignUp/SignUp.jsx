@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import SignUpLogo from "../../assets/photo/SignUp.svg"
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 const SignUp = () => {
 
@@ -19,17 +20,17 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         reset();
-                        alert("Good job!", "Register SuccessFully", "success");
+                        swal("Good job!", "Register SuccessFully", "success");
                         navigate('/DashBoard')
                     })
 
                     .catch(error => {
-                        alert("Oops..!", `${error.message}`, "error");
+                        swal("Oops..!", `${error.message}`, "error");
                     })
             })
 
             .catch(error => {
-                alert("Oops..!", `${error.message}`, "error");
+                swal("Oops..!", `${error.message}`, "error");
             })
 
     }

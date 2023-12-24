@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 
 const DashBoard = () => {
@@ -13,11 +14,11 @@ const DashBoard = () => {
         logOut()
             .then(res => {
                 console.log(res)
-                alert("Good job!", "SignOut Successfully", "success")
+                swal("Good job!", "SignOut Successfully", "success")
             })
 
             .catch(error => {
-                alert("Oops..!", `${error.message}`, "error");
+                swal("Oops..!", `${error.message}`, "error");
             })
         navigate("/")
     }
@@ -28,7 +29,6 @@ const DashBoard = () => {
     return (
         <div>
             <div>
-
 
                 <div className="flex">
 
@@ -59,6 +59,10 @@ const DashBoard = () => {
                                 <NavLink to="/dashboard/task">All Task</NavLink>
                             </li>
 
+                            <li className="lg:font-bold lg:text-base mx-auto">
+                                <NavLink to="/dashboard/todo">To-Do-List</NavLink>
+                            </li>
+
                             <div className="divider">OR</div>
 
                             <li className="lg:font-bold lg:text-base mx-auto">
@@ -73,7 +77,7 @@ const DashBoard = () => {
 
                     </div>
                     {/* Dashboard content  */}
-
+        
                     <div className="flex-1 md:p-4 m-4">
                         <Outlet></Outlet>
                     </div>

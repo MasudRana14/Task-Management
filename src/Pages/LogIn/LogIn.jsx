@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginLogo from "../../assets/photo/SignIn.svg"
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import swal from "sweetalert";
 
 
 
@@ -20,11 +21,11 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-               alert("Good job!", "Login Successfully", "success");
+               swal("Good job!", "Login Successfully", "success");
                 navigate('/DashBoard');
             })
             .catch(error => {
-                alert("Oops..!", `${error.message}`, "error");
+                swal("Oops..!", `${error.message}`, "error");
             })
 
     }

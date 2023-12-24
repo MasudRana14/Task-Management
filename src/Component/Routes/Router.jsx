@@ -9,6 +9,7 @@ import Blog from "../../Pages/Blog/Blog";
 import DashBoard from "./DashBoard/DashBoard";
 import AllTask from "./DashBoard/Pages/AllTask/AllTask";
 import CreateTask from "./DashBoard/CreateTask/CreateTask";
+import ToDoList from "./DashBoard/ToDoList/ToDoList";
 
 export const Router = createBrowserRouter([
     {
@@ -54,6 +55,10 @@ export const Router = createBrowserRouter([
             {
                 path:"createTask",
                 element:<CreateTask></CreateTask>
+            },
+            {
+                path:"todo",
+                element:<ToDoList></ToDoList>
             }
         ]
     }
