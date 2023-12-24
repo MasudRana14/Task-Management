@@ -3,6 +3,7 @@ import LoginLogo from "../../assets/photo/SignIn.svg"
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import swal from "sweetalert";
+import GoogleLogin from "../../SocialLogin/GoogleLogin/GoogleLogin";
 
 
 
@@ -74,7 +75,7 @@ const LogIn = () => {
 
                         </form>
                         <div className=" mx-auto -mt-6 mb-3">
-                            {/* <GoogleLogin></GoogleLogin> */}
+                            <GoogleLogin></GoogleLogin>
                         </div>
                         <div className="mx-auto p-2">
                             <p>DON NOT HAVE AN ACCOUNT? <Link to="/signUp"><span className="text-blue-500 font-bold">SIGN UP HERE</span></Link></p>

@@ -10,6 +10,7 @@ import DashBoard from "./DashBoard/DashBoard";
 import AllTask from "./DashBoard/Pages/AllTask/AllTask";
 import CreateTask from "./DashBoard/CreateTask/CreateTask";
 import ToDoList from "./DashBoard/ToDoList/ToDoList";
+import PrivateRoute from "./PrivateRoute";
 
 export const Router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ export const Router = createBrowserRouter([
     // DashBoard
     {
         path:"/DashBoard",
-        element:<DashBoard></DashBoard>,
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children:[
             {
                 path:"task",
