@@ -1,7 +1,37 @@
+import Swal from "sweetalert2";
+import useAxios from "../../../../Hooks/useAxios";
+
 
 const TodoCard = ({ item }) => {
+    
+    const { title, type, deadline, description } = item;
+    const axiosData = useAxios();
 
-    const { title, type, deadline, description} = item;
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosData.delete(`/tasks/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                              Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                              });
+                        }
+                    })
+            }
+        });
+    }
 
     return (
         <div >
@@ -12,16 +42,20 @@ const TodoCard = ({ item }) => {
                     {title}
                 </h5>
                 <p className="mb-2 text-base text-neutral-600 dark:text-neutral-200">
-                Priority: {type}
+                    Priority: {type}
                 </p>
                 <p className="mb-2 text-base text-neutral-600 dark:text-neutral-200">
-                Deadline: {deadline}
+                    Deadline: {deadline}
                 </p>
-                <button className="btn btn-sm">
+                <p className="mb-2 text-base text-neutral-600 dark:text-neutral-200">
+                    {description}
+                </p>
+
+                <button onClick={() => handleDelete(item._id)} className="btn btn-sm">
                     Delete
                 </button>
             </div>
-            
+
         </div>
     );
 };
